@@ -1,0 +1,551 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
+
+/* VARIABLES & THEMES */ 
+
+:root {
+    --primary-color: #cf0f0f;  /* os dois tracinhos da frente definem uma variável no CSS */
+    --primary-color-contrast: #ffffff;
+    --field-background-color: #000;
+}
+
+.light-theme {
+    --page-background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #ffffff 65%,
+        rgba(255, 255, 255, 0.75) 100%
+    );
+    --header-background-color: #e3e3e3;
+    --highlight-color: #000000;
+    --feature-font-family: "Archivo", sans-serif;
+    --character-top-image-src: url("/assets/images/characters/criancasBike.svg");
+    --character-top-image-color: #ffffff;
+    --character-bottom-image-src: url("/assets/images/characters/mundoInvertido.svg");
+    --character-bottom-image-color: #e5e5e5;
+    --background-lamp-image: url("/assets/images/backgrounds/lamps.png");
+    --footer-background-color: #b5bbbf;
+    --background-image: #ffffff;
+}
+
+.dark-theme {
+    --page-background: linear-gradient(
+        180deg,
+        #050000 0%,
+        #130404 65%,
+        rgba(19, 1, 1, 0.75) 100%
+    );
+    --header-background-color: #220f0f;
+    --highlight-color: #ffffff;
+    --feature-font-family: "Rubik Glitch", sans-serif;
+    --character-top-image-src: url("/assets/images/characters/mundoInvertido.svg");
+    --character-top-image-color: #000000;
+    --character-bottom-image-src: url("../images/characters/criancasBike.svg");
+    --character-bottom-image-color: rgba(255, 255, 255, 0.1);
+    --background-lamp-image: url("/assets/images/backgrounds/lamps-inverted.png");
+    --footer-background-color: #000;
+    --background-image: #000;
+}
+
+.dark-theme button,
+.dark-theme h1,
+.dark-theme h2,
+.dark-theme h3 {
+    letter-spacing: 5px;
+    font-weight: normal;
+}
+
+.dark-theme .invert-element {
+    transform: rotateZ(180deg) scaleX(-1);
+}
+
+/* GENERIC STYLES */
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    transition: 1s;
+}
+
+h1,
+h2, 
+h3 {
+    font-family: var(--feature-font-family);
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+p {
+    color: var(--highlight-color);
+}
+
+p,
+input,
+textarea,
+label {
+    font-family: 'Libre-Baskerville', serif;
+}
+
+button {
+    padding: 16px 32px;
+    background-color: transparent;
+    font-weight: 900;
+    font-family: var(--feature-font-family);
+    font-size: 1.25rem; /*esse rem faz o tamanho da fonte vezes o numero escrito aqui, nesse caso, ficaria 16 vezes 1.25 */
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 1s;
+}
+
+input,
+textarea {
+    border: 2px solid var(--primary-color-contrast);
+    background-color: var(--field-background-color);
+    color: var(--primary-color-contrast);
+    padding: 8px;
+    margin-bottom: 24px;
+    font-size: 1rem;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+    outline: none;
+    border-color: black;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+
+/*HEADER STY<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stranger Things</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" type="image" href="assets/images/icon/favicon.png">
+</head>
+<body class="light-theme" aria-label="O site está utilizando o tema light">
+<header>
+    <audio id="music" autoplay>
+        <source src="assets/musics/normal-world.mpeg">
+    </audio>
+    <div class="header-content">
+        <img class="invert-element" src="assets/images/banner/logo.svg" alt="Imagem principal">
+        <p class="invert-element" role="textbox">
+            Uma jornada para quem não tem medo do desconhecido. O caminho para o
+            Mundo invertido é incerto, repleto de obstáculos e perigos. Porém, a
+            recompensa é grande: salvar Hawkings e o mundo todo das garras de
+            Vecna. Você está preparado? Então clique no botão abaixo para entrar
+            no Mundo Invertido!
+        </p>
+        <button class="invert-element" id="switch-theme-button" onclick="switchTheme()">Inverter Mundos</button>
+    </div>
+
+    <div id="top-characters" class="world-characters"></div>
+</header>
+
+<main>
+    <div id="buttom-characters" class="world-characters"></div>
+
+    <section id="section-inverted-world" class="container">
+        <div class="section-texts">
+            <h2 class="invert-element">O Mundo Invertido</h2>
+            <p class="invert-element">
+                O Mundo Invertido parece uma cópia do nosso mundo, mas com criaturas
+                horrendas, tempestades assustadoras, muita escuridão e entidades
+                malignas. Um reino controlado por Vecna, que tem planos de trazer
+                tudo isso ao nosso mundo.
+            </p>
+        </div>
+
+        <img
+                class="inverter-element"
+                src="assets/images/content/inverted-world.png"
+                alt="Imagem ilustrativa do Mundo Invertido"
+        />
+    </section>
+
+    <section id="section-stranger-things-trailer" class="container">
+        <div class="video-frame" aria-hidden="true">
+            <iframe
+                    width="460"
+                    height="215"
+                    src="https://www.youtube.com/embed/b6XKRA2DFQI"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+        </div>
+        <div class="section-texts">
+            <h2 class="invert-element">Stranger Things Vol. 4</h2>
+            <p class="invert-element">
+                Mais experientes, os heróis de Stranger Things também precisam
+                enfrentar desafios maiores do que nunca e fazer decisões que vão
+                mudar suas vidas para sempre. Confira ao lado o trailer da quarta
+                temporada.
+            </p>
+        </div>
+    </section>
+
+    <section id="section-stranger-things-gallery">
+        <div class="container section-text">
+            <h2 class="invert-element">A segunda série mais assistida da Netflix</h2>
+            <ul class="gallery-container">
+                <li class="gallery-image invert-element">
+                    <img src="assets/images/content/serie-image-01.png" alt="Imagem de Vecna"/>
+                </li>
+                <li class="gallery-image invert-element">
+                    <img src="assets/images/content/serie-image-02.png" alt="Imagem ilustrativa dos amigos de Eleven"/>
+                </li>
+                <li class="gallery-image invert-element">
+                    <img src="assets/images/content/serie-image-03.png" alt="Imagem Eleven assustada"/>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="section-form" class="container">
+        <h2 class="invert-element">O clube Dungeons & Dragons</h2>
+        <p role="textbox" class="invert-element">
+            Para deter Vecna, os heróis de Stranger Things também precisam de
+            você. O Clube de D&D mais famoso de Hawkings está com vagas abertas
+            para sua próxima aventura. Se você é destemido, gosta de desafios e
+            não tem medo de rodar o D20, chegou a hora de se inscrever para fazer
+            parte da nova campanha.
+        </p>
+
+        <div class="form-content">
+            <h3 class="invert-element">Entre para o clube D&D e tenha experiências de <span>outro mundo</span></h3>
+
+            <div class="form-container">
+                <form>
+                    <label for="txtName" class="invert-element">Nome Completo</label>
+                    <input type="text" name="name" class="invert-element" id="txtName">
+
+                    <label for="txtEmail" class="invert-element">E-mail</label>
+                    <input type="email" name="email" class="invert-element" id="txtEmail">
+
+                    <label for="txtLevel" class="invert-element">Level</label>
+                    <input type="text" name="level" class="invert-element" id="txtLevel">
+
+                    <label for="txtCharacter" class="invert-element">Personagem</label>
+                    <textarea name="character" class="invert-element" id="txtCharacter" cols="30" rows="10"></textarea>
+
+                    <button type="button" id="btnSubscribe" class="invert-element">Me inscrever</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p class="invert-element">
+        Projeto construído para fins didáticos, para colocar em
+        prática os conhecimentos de HTML, CSS e JavaScript aprendidos na DIO.
+    </p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>LES*/
+
+header {
+    background-color: var(--header-background-color);
+    min-height: 850px;
+    display: flex; /*vai organizar essa parte em uma "caixinha", por padrão ele organiza em linha, para organizar em coluna, é só colocar flex-direction: column*/
+    flex-direction: column;
+    align-items: center; /*vai alinhar os itens da "caixinha" no centro*/
+    position: relative; /*vai fazer com que o pseudoelemento respeite o espaço dele, não ultrapassando para outras partes do site */
+}
+
+header::before { /*está criando um pseudoelemento para criar um efeito de opacidade no background do header */
+    content: ""; /*conteudo vazio, pq ele só vai criar um efeito de opacidade*/
+    width: 100%; /*será 100% do header*/
+    height: 100%;
+    position: absolute; /*para ficar por cima do elemento principal do header, justamente para dar esse efeito de opacidade*/
+    background-image: url("/assets/images/banner/florest.webp");
+    background-repeat: no-repeat;
+    background-size: cover; /*ajusta ao tamanho do header*/
+    background-position: center 90%;
+    filter: saturate(0); /*vai mexer na cor da imagem, assim ela vai ficar em preto e branco */
+    opacity: 0.2 /*aqui estamos deixando a imagem com 20% de opacidade*/
+    
+}
+
+.header-content {
+    max-width: 700px;
+    padding: 80px 20px;
+    text-align: center;
+    z-index: 2; /*vai criar uma prioridade para esse item, para ele ser clicavel em cima da imagem de fundo. O z-index sempre vem 1 por padrão, se quiser aumentar a prioridade, coloca 2*/
+}
+
+.header-content img {
+    width: 80%;
+}
+
+.header-content p {
+    margin: 30px 0 50px;
+}
+
+.header-content button {
+    border: 3px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.header-content button:hover { /*esse hover vai ser tipo "TODA VEZ QUE PASSAR O MOUSE", uma subclasse, para dar efeito e ficar bonitinho*/
+    background-color: var(--primary-color);
+    color: var(--primary-color-contrast)
+}
+
+/* WORLD CHARACTERS STYLES */
+
+.world-characters {
+    width: 100%;
+    max-width: 900px;
+    position: absolute;
+}
+
+.world-characters#top-characters {
+    height: 100%;
+    background: var(--character-top-image-color);
+    bottom: -3px;
+    mask-image: var(--character-top-image-src) bottom / contain no-repeat;
+    -webkit-mask: var(--character-top-image-src) bottom / 100% no-repeat;
+}
+
+.world-characters#buttom-characters {
+    height: 500px;
+    background-color: var(--character-bottom-image-color);
+    top: 3px;
+    transform: rotateZ(180deg) scaleX(-1);
+    position: relative;
+
+    mask: var(--character-bottom-image-src) bottom / contain no repeat;
+    -webkit-mask: var(--character-bottom-image-src) bottom / 100% no-repeat;
+}
+
+/* MAIN STYLES */
+
+main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: var(--page-background) no-repeat,
+        url("../images/backgrounds/florest.png") no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* SECTIONS STYLES */
+
+section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 95px;
+}
+
+/* SECTION INVERTED WORLD */
+
+.container {
+    max-width: 1200px;
+}
+
+#section-inverted-world {
+    align-items: center;
+}
+
+#section-inverted-world .section-texts {
+    width: 50%;
+}
+
+#section-inverted-world .section-texts h2 {
+    max-width: 300px;
+}
+
+#section-stranger-things-trailer .section-texts {
+    width: 50%;
+    text-align: right;
+}
+
+#section-stranger-things-trailer .section-texts h2 {
+    max-width: 425px;
+    display: inline-block;
+}
+
+#section-stranger-things-trailer .video-frame {
+    background-color: var(--primary-color);
+}
+
+#section-stranger-things-trailer .video-frame iframe {
+    position: relative;
+    bottom: 24px;
+    left: 24px;
+    border: 2px solid;
+    border-image: linear-gradient(
+        var(--primary-color),
+        var(--primary-color-contrast)
+    );
+    border-image-slice: 10;
+}
+
+/* SECTION STRANGER THINGS GALLERY */
+
+#section-stranger-things-gallery {
+    width: 100%;
+    justify-content: center;
+    background: var(--background-lamp-image) 120% / 50% no-repeat;
+}
+
+#section-stranger-things-gallery .container {
+    width: 100%;
+}
+
+#section-stranger-things-gallery .container h2 {
+    width: 800px;
+}
+
+#section-stranger-things-gallery .gallery-container {
+    display: flex;
+    gap: 50px;
+    padding-left: 20px;
+}
+
+#section-stranger-things-gallery .gallery-image {
+    width: 250px;
+    height: 250px;
+    outline: 20px solid var(--highlight-color);
+    border: 3px solid var(--primary-color);
+    box-sizing: initial;
+}
+
+#section-stranger-things-gallery .gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 10px solid var(--highlight-color);
+}
+
+/* SECTION FORM */
+
+#section-form {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+}
+
+#section-form h2 {
+    width: 600px;
+}
+
+#section-form .form-content h3 {
+    color: var(--highlight-color);
+    flex-basis: 30%;
+    text-align: left;
+    margin: 0;
+}
+
+#section-form .form-content h3 span {
+    color: var(--primary-color);
+}
+
+#section-form .form-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#section-form .form-container {
+    flex-basis: 50%;
+    position: relative;
+}
+
+#section-form .form-container::after {
+    content: "";
+    background-color: var(--highlight-color);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: -1;
+}
+
+#section-form .form-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+    background-color: var(--primary-color);
+    color: var(--primary-color-contrast);
+    text-align: left;
+}
+
+#section-form .form-container form button {
+    border: none;
+    background-color: var(--field-background-color);
+    color: var(--primary-color-contrast);
+    max-width: 300px;
+    align-self: center;
+}
+
+#section-form .form-container form button:hover {
+    background-color: var(--primary-color-contrast);
+    color: var(--field-background-color);
+}
+
+/* FOOTER STYLES */
+
+footer {
+    padding: 70px 0; /*padding é o espaçamento interno*/
+    background-color: var(--footer-background-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+footer p {
+    max-width: 700px;
+    margin-bottom: 24px;
+}
+
+footer::before,
+footer::after {
+    content: "";
+    width: 300px;
+    height: 200px;
+    background: url("../images/footer/tape.svg") no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: -30px;
+}
+
+footer::before {
+    left: -50px;
+    transform: rotateZ(-10deg);
+}
+
+footer::after {
+    right: -50px;
+    transform: rotateZ(10deg);
+}
